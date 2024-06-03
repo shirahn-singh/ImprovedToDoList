@@ -1,20 +1,37 @@
+import { useState } from "react";
+
 interface TaskProp {
   text: string;
-  onCloseTask: () => void;
+  onDeleteTask: () => void;
 }
 
-const IndividualTask = ({ text, onCloseTask }: TaskProp) => {
+const IndividualTask = ({ text, onDeleteTask}: TaskProp) => {
+  const [editPressed, setEdit] = useState(false);
+
+  const handleEditClick = () => {
+    setEdit(!editPressed);
+  };
+
   return (
-    <div className="d-flex justify-content-between">
+    <>
+    {editPressed ? <input type="text" /> : null}
+     <div className="d-flex justify-content-between">
       {text}
+      <span>
+      <button type="button" onClick={handleEditClick}>
+            {editPressed ? "Save" : "Edit"}
+          </button>
       <button
         type="button"
         className="btn-close"
         data-bs-dismiss="alert"
         aria-label="Close"
-        onClick={onCloseTask}
-      ></button>
+        onClick={onDeleteTask}
+      >Delete</button>
+      </span>
     </div>
+    </>
+   
   );
 };
 
