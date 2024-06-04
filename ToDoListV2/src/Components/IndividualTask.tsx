@@ -1,29 +1,31 @@
 import { useState } from "react";
 
 interface TaskProp {
-  text: string;
   onDeleteTask: () => void;
 }
 
-const IndividualTask = ({ text, onDeleteTask}: TaskProp) => {
+const IndividualTask = ({onDeleteTask}: TaskProp) => {
   var [editPressed, setEdit] = useState(false);
   var [task, changeTaskValue] = useState('Temporary value to change');
 
   const handleEditClick = () => {
-    setEdit(!editPressed);
+    setEdit(true);
+  };
+
+  const handleCancelClick = () => {
+    setEdit(false);
   };
 
   return (
     <>
-    {editPressed ? <input type="text" value={task} /> : task}
      <div className="d-flex justify-content-between">
-      {text}
+     {editPressed ? <input type="text" value={task} /> : task}
       <span>
       <button type="button" onClick={handleEditClick}>
             {editPressed ? "Save" : "Edit"}
           </button>
 
-          {editPressed? <button type="button" onClick={handleEditClick}>
+          {editPressed? <button type="button" onClick={handleCancelClick}>
             Cancel
           </button>: null}
 
