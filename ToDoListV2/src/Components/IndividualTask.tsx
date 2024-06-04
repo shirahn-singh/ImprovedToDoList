@@ -6,7 +6,8 @@ interface TaskProp {
 }
 
 const IndividualTask = ({ text, onDeleteTask}: TaskProp) => {
-  const [editPressed, setEdit] = useState(false);
+  var [editPressed, setEdit] = useState(false);
+  var [task, changeTaskValue] = useState('Temporary value to change');
 
   const handleEditClick = () => {
     setEdit(!editPressed);
@@ -14,13 +15,18 @@ const IndividualTask = ({ text, onDeleteTask}: TaskProp) => {
 
   return (
     <>
-    {editPressed ? <input type="text" /> : null}
+    {editPressed ? <input type="text" value={task} /> : task}
      <div className="d-flex justify-content-between">
       {text}
       <span>
       <button type="button" onClick={handleEditClick}>
             {editPressed ? "Save" : "Edit"}
           </button>
+
+          {editPressed? <button type="button" onClick={handleEditClick}>
+            Cancel
+          </button>: null}
+
       <button
         type="button"
         className="btn-close"
