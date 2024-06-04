@@ -13,6 +13,8 @@ const IndividualTask = ({ onDeleteTask }: TaskProp) => {
     setEdit(true);
   };
 
+
+  //Think of combining handleSave and handleCancel into one function. 
   const handleSaveClick = () => {
     setEdit(false);
     setOriginalTask(newTask);
