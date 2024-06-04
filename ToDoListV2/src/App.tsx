@@ -10,7 +10,6 @@ function App() {
   return (
     <>  
     <IndividualTask
-        text="Hello There"
         onDeleteTask={() => deleteButtonClicked(true)}
       ></IndividualTask>
     </>
