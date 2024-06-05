@@ -3,11 +3,12 @@ import "../Styling/IndividualTask.css";
 
 interface TaskProp {
   onDeleteTask: () => void;
+  text: string;
 }
 
-const IndividualTask = ({ onDeleteTask }: TaskProp) => {
+const IndividualTask = ({ text, onDeleteTask }: TaskProp) => {
   const [editPressed, setEdit] = useState(false);
-  const [originalTask, setOriginalTask] = useState("Temporary value to change");
+  const [originalTask, setOriginalTask] = useState(text);
   const [newTask, setNewTask] = useState(originalTask);
 
   const handleEditClick = () => {
@@ -35,7 +36,7 @@ const IndividualTask = ({ onDeleteTask }: TaskProp) => {
         {editPressed ? (
           <input
             type="text"
-            className="input-task-box"
+            className="input-task-box font-weight-bold"
             value={newTask}
             onChange={handleInputChange}
           />

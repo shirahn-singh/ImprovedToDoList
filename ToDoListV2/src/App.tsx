@@ -3,15 +3,22 @@ import "./App.css";
 import IndividualTask from "./Components/IndividualTask";
 
 function App() {
-
   var [editTask, editButtonClicked] = useState(false);
   var [deleteTask, deleteButtonClicked] = useState(false);
 
+  var taskList: string[] = ["item1", "item2", "item3"];
+
   return (
-    <>  
-    <IndividualTask
-        onDeleteTask={() => deleteButtonClicked(true)}
-      ></IndividualTask>
+    <>
+      <h2>To Do or not To Do List</h2>
+
+      {taskList.map((task, index) => (
+        <IndividualTask
+          onDeleteTask={() => deleteButtonClicked(true)}
+          text={task}
+          key={index}
+        ></IndividualTask>
+      ))}
     </>
   );
 }
