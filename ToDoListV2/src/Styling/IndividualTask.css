@@ -1,0 +1,9 @@
+.button-padding{
+    margin-left: 10px;
+}
+
+.input-task-box{
+    border: none;
+    outline: none;
+    background: none; /*might change this, but will keep it for now. */
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../Styling/IndividualTask.css";
 
 interface TaskProp {
   onDeleteTask: () => void;
@@ -6,15 +7,14 @@ interface TaskProp {
 
 const IndividualTask = ({ onDeleteTask }: TaskProp) => {
   const [editPressed, setEdit] = useState(false);
-  const [originalTask, setOriginalTask] = useState('Temporary value to change');
+  const [originalTask, setOriginalTask] = useState("Temporary value to change");
   const [newTask, setNewTask] = useState(originalTask);
 
   const handleEditClick = () => {
     setEdit(true);
   };
 
-
-  //Think of combining handleSave and handleCancel into one function. 
+  //Think of combining handleSave and handleCancel into one function.
   const handleSaveClick = () => {
     setEdit(false);
     setOriginalTask(newTask);
@@ -33,7 +33,12 @@ const IndividualTask = ({ onDeleteTask }: TaskProp) => {
     <>
       <div className="d-flex justify-content-between">
         {editPressed ? (
-          <input type="text" value={newTask} onChange={handleInputChange} />
+          <input
+            type="text"
+            className="input-task-box"
+            value={newTask}
+            onChange={handleInputChange}
+          />
         ) : (
           originalTask
         )}
@@ -41,17 +46,22 @@ const IndividualTask = ({ onDeleteTask }: TaskProp) => {
           <button
             type="button"
             onClick={editPressed ? handleSaveClick : handleEditClick}
+            className="button-padding"
           >
             {editPressed ? "Save" : "Edit"}
           </button>
           {editPressed ? (
-            <button type="button" onClick={handleCancelClick}>
+            <button
+              type="button"
+              className="button-padding"
+              onClick={handleCancelClick}
+            >
               Cancel
             </button>
           ) : null}
           <button
             type="button"
-            className="btn-close"
+            className="btn-close button-padding"
             data-bs-dismiss="alert"
             aria-label="Close"
             onClick={onDeleteTask}
