@@ -11,7 +11,9 @@ function App() {
   return (
     <>
       <h2>To Do or not To Do List</h2>
-
+      <button type="button" className="button-padding">
+        Add new task
+      </button>
       {taskList.map((task, index) => (
         <IndividualTask
           onDeleteTask={() => deleteButtonClicked(true)}
