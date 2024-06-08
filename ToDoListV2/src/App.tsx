@@ -3,15 +3,41 @@ import "./App.css";
 import IndividualTask from "./Components/IndividualTask";
 
 function App() {
+
+ 
+
+
+
+  var initialList = ["item1", "item2", "item3"];
   var [editTask, editButtonClicked] = useState(false);
   var [deleteTask, deleteButtonClicked] = useState(false);
+  var [addTask, updateNewTask] = useState('');
+  var [taskList, setTaskList] = useState<string[]>(initialList);
 
-  var taskList: string[] = ["item1", "item2", "item3"];
+  const AddTaskToList = () => {
+    if (addTask) { 
+      setTaskList([...taskList, addTask]);
+      updateNewTask(''); 
+   }
+   else{
+      alert("Enter a task to add. ")
+   }
+  };
+  
+  const handleAddItem = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateNewTask(e.target.value);
+  };
 
   return (
     <>
       <h2>To Do or not To Do List</h2>
-      <button type="button" className="button-padding">
+      <input
+            type="text"
+            value={addTask}
+            className="input-task-box font-weight-bold"
+            onChange={handleAddItem}
+          />
+      <button type="button" className="button-padding" onClick = {AddTaskToList} >
         Add new task
       </button>
       {taskList.map((task, index) => (
