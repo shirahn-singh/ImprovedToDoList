@@ -28,6 +28,10 @@ function App() {
     updateNewTask(e.target.value);
   };
 
+  const handleDeleteTask = (index: number) => {
+    setTaskList(taskList.filter((_, i) => i !== index))
+  }
+
   return (
     <>
       <h2>To Do or not To Do List</h2>
@@ -42,7 +46,7 @@ function App() {
       </button>
       {taskList.map((task, index) => (
         <IndividualTask
-          onDeleteTask={() => deleteButtonClicked(true)}
+          onDeleteTask={() => handleDeleteTask(index)}
           text={task}
           key={index}
         ></IndividualTask>
