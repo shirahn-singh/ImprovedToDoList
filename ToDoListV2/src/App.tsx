@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import IndividualTask from "./Components/IndividualTask";
+import Button from "./Components/Button";
 
 function App() {
 
@@ -41,9 +42,10 @@ function App() {
             className="input-task-box font-weight-bold"
             onChange={handleAddItem}
           />
-      <button type="button" className="button-padding" onClick = {AddTaskToList} >
-        Add new task
-      </button>
+      
+      <Button text="Add new task" onButtonTask={AddTaskToList}>
+      </Button>
+
       {taskList.map((task, index) => (
         <IndividualTask
           onDeleteTask={() => handleDeleteTask(index)}

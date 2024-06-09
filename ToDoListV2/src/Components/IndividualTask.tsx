@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../Styling/IndividualTask.css";
+import Button from "./Button";
 
 interface TaskProp {
   onDeleteTask: () => void;
@@ -44,13 +45,10 @@ const IndividualTask = ({ text, onDeleteTask }: TaskProp) => {
           originalTask
         )}
         <span>
-          <button
-            type="button"
-            onClick={editPressed ? handleSaveClick : handleEditClick}
-            className="button-padding"
-          >
-            {editPressed ? "Save" : "Edit"}
-          </button>
+        <Button  text={editPressed ? "Save" : "Edit"}
+         onButtonTask={editPressed ? handleSaveClick: handleEditClick} >
+        </Button>
+
           {editPressed ? (
             <button
               type="button"
@@ -60,15 +58,8 @@ const IndividualTask = ({ text, onDeleteTask }: TaskProp) => {
               Cancel
             </button>
           ) : null}
-          <button
-            type="button"
-            className="btn-close button-padding"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            onClick={onDeleteTask}
-          >
-            Delete
-          </button>
+          <Button text="Delete" onButtonTask={onDeleteTask}>
+          </Button>
         </span>
       </div>
     </>
